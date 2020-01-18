@@ -134,8 +134,7 @@ public class Profesor {
 	}
 	
 	public static Profesor getProfesorFicticio(String dni) {
-		Profesor profesor = new Profesor("José Ramón", dni,"joseramon.jimenez@iesalandalus.org");
-		return profesor;
+		return new Profesor ("José Ramón", dni,"joseramon.jimenez@iesalandalus.org");
 	}
 
 	@Override

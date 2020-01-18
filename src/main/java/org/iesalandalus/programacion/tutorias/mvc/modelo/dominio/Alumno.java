@@ -28,8 +28,7 @@ public class Alumno {
 	}
 
 	public static Alumno getAlumnoFicticio(String correo) {
-		Alumno alumno = new Alumno("Mar Membrive", correo);
-		return alumno;
+		return new Alumno("Mar Membrive", correo);
 	}
 
 	public String getNombre() {

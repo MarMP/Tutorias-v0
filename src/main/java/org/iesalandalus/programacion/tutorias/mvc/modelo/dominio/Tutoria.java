@@ -27,7 +27,6 @@ public class Tutoria {
 		if (profesor == null) {
 			throw new NullPointerException("ERROR: El profesor no puede ser nulo.");
 		}
-		// this.profesor = profesor;
 		this.profesor = new Profesor(profesor);
 	}
 
