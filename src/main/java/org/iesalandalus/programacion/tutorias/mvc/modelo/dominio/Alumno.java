@@ -25,6 +25,7 @@ public class Alumno {
 		}
 		setNombre(alumno.nombre);
 		setCorreo(alumno.correo);
+		expediente = PREFIJO_EXPEDIENTE + getIniciales() + "_" + ultimoIdentificador;
 	}
 
 	public static Alumno getAlumnoFicticio(String correo) {
