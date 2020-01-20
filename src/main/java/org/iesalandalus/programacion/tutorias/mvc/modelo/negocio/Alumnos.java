@@ -28,13 +28,13 @@ public class Alumnos {
 	}
 
 	public Alumno[] get() {
-		return copiaProfundaAlumno(coleccionAlumnos);
+		return copiaProfundaAlumno();
 	}
 
-	private Alumno[] copiaProfundaAlumno(Alumno[] alumnos) {
-		Alumno[] copiaAlumnos = new Alumno[alumnos.length];
-		for (int i = 0; i < alumnos.length && alumnos[i] != null; i++) {
-			copiaAlumnos[i] = new Alumno(alumnos[i]);
+	private Alumno[] copiaProfundaAlumno() {
+		Alumno[] copiaAlumnos = new Alumno[coleccionAlumnos.length];
+		for (int i = 0; i < coleccionAlumnos.length && coleccionAlumnos[i] != null; i++) {
+			copiaAlumnos[i] = new Alumno(coleccionAlumnos[i]);
 		}
 		return copiaAlumnos;
 	}
