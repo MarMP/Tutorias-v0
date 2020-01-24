@@ -15,7 +15,7 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.Tutorias;
 
 public class Modelo {
 
-	private static final int CAPACIDAD = 7;
+	private static final int CAPACIDAD = 20;
 	private Alumnos alumnos;
 	private Citas citas;
 	private Profesores profesores;

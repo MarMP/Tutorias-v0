@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Alumno {
 
-	private static final String ER_NOMBRE = "(?=.*\\s.+)(?![a-zA-Zñáéíóúü]\\s)(?!.*\\s[a-zA-Zñáéíóúü]\\s)(?!.*\\s[a-zA-Zñáéíóúü]$).[a-zA-Zñáéíóúü\\s]+";
+	private static final String ER_NOMBRE = "^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\\']+[\\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\\'])+[\\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\\'])?$";
 	private static final String PREFIJO_EXPEDIENTE = "SP_";
 	private static final String ER_CORREO = "\\w+(?:\\.\\w+)*@\\w+\\.\\w{2,5}";
 	private static int ultimoIdentificador = 0;
@@ -54,22 +54,16 @@ public class Alumno {
 	private String formateaNombre(String nombre) {
 		String cadenaMinus = nombre;
 		cadenaMinus = cadenaMinus.toLowerCase(); // convierto la cadena a minúscula
-		// System.out.println(cadenaMinus);
 		cadenaMinus = cadenaMinus.trim(); // quito espacios en blanco iniciales y finales
 		cadenaMinus = cadenaMinus.replaceAll(" +", " "); // quita espacios de mas
 		char[] cadCaracter = cadenaMinus.toCharArray(); // convierte la cadena en un array de caracteres
 		cadCaracter[0] = Character.toUpperCase(cadCaracter[0]); // primera letra mayúscula
 
-		// Recorre el array de char
 		for (int i = 0; i < cadenaMinus.length() - 1; i++)
-			// Si encuentra un espacio o punto, suma 1 a la posicion de "i" que encuentre y
-			// convierte en mayus la primera letra
 			if (cadCaracter[i] == ' ' || cadCaracter[i] == '.') {
 				cadCaracter[i + 1] = Character.toUpperCase(cadCaracter[i + 1]);
 			}
-		String nombreFormateado = new String(cadCaracter);
-
-		return nombreFormateado;
+		return new String(cadCaracter);
 	}
 
 	public String getCorreo() {

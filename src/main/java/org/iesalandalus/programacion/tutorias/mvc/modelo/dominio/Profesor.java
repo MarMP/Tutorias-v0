@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Profesor {
-	private static final String ER_NOMBRE = "(?=.*\\s.+)(?![a-zA-Zñáéíóúü]\\s)(?!.*\\s[a-zA-Zñáéíóúü]\\s)(?!.*\\s[a-zA-Zñáéíóúü]$).[a-zA-Zñáéíóúü\\s]+";
+	private static final String ER_NOMBRE = "^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\\']+[\\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\\'])+[\\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\\'])?$";
 	private static final String ER_DNI = "([0-9]{8})([A-Za-z])";
 	private static final String ER_CORREO = "\\w+(?:\\.\\w+)*@\\w+\\.\\w{2,5}";
 	private String nombre;
@@ -50,7 +50,6 @@ public class Profesor {
 	private String formateaNombre(String nombre) {
 		String cadenaMinus = nombre;
 		cadenaMinus = cadenaMinus.toLowerCase(); // convierto la cadena a minúscula
-		// System.out.println(cadenaMinus);
 		cadenaMinus = cadenaMinus.trim(); // quito espacios en blanco iniciales y finales
 		cadenaMinus = cadenaMinus.replaceAll(" +", " "); // quita espacios de mas
 		char[] cadCaracter = cadenaMinus.toCharArray(); // convierte la cadena en un array de caracteres
@@ -58,14 +57,10 @@ public class Profesor {
 
 		// Recorre el array de char
 		for (int i = 0; i < cadenaMinus.length() - 1; i++)
-			// Si encuentra un espacio o punto, suma 1 a la posicion de "i" que encuentre y
-			// convierte en mayus la primera letra
 			if (cadCaracter[i] == ' ' || cadCaracter[i] == '.') {
 				cadCaracter[i + 1] = Character.toUpperCase(cadCaracter[i + 1]);
 			}
-		String nombreFormateado = new String(cadCaracter);
-
-		return nombreFormateado;
+		return new String(cadCaracter);
 	}
 
 	public String getDni() {
@@ -82,7 +77,7 @@ public class Profesor {
 		if (!dni.matches(ER_DNI)) {
 			throw new IllegalArgumentException("ERROR: El DNI no tiene un formato válido.");
 		}
-		if (comprobarLetraDni(dni) == false) {
+		if (!comprobarLetraDni(dni)) {
 			throw new IllegalArgumentException("ERROR: La letra del DNI no es correcta.");
 		}
 		this.dni = dni;
@@ -104,7 +99,6 @@ public class Profesor {
 			String numeroDni = matcher.group(1); // grupo 1 de la expresion
 			posicionLetra = Integer.parseInt(numeroDni) % 23; // calcula el resto que sera la letra
 			String letraDni = matcher.group(2);
-			//System.out.println("estoy aqui");
 			char caracter = letraDni.charAt(0);
 			if (caracter == letra[posicionLetra]) {
 				letraValida = true;

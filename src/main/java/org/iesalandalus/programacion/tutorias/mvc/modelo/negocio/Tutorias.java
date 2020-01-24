@@ -28,12 +28,11 @@ public class Tutorias {
 		if (profesor == null) {
 			throw new IllegalArgumentException("ERROR: profesor nulo.");
 		}
-		int posicion = 0;
-		Tutoria[] tutoriasProfesor = new Tutoria [tamano];
-		for (int i = 0; i < coleccionTutorias.length && coleccionTutorias[i] != null; i++) {
+		int j = 0;
+		Tutoria[] tutoriasProfesor = new Tutoria [capacidad];
+		for (int i = 0; !tamanoSuperado(i); i++) {
 			if (coleccionTutorias[i].getProfesor().equals(profesor)) {
-				tutoriasProfesor[posicion] = new Tutoria (coleccionTutorias[i]);
-				posicion++;
+				tutoriasProfesor[j++] = new Tutoria (coleccionTutorias[i]);
 			}
 		}
 		return tutoriasProfesor;
@@ -48,8 +47,8 @@ public class Tutorias {
 	}
 
 	private Tutoria[] copiaProfundaTutorias() {
-		Tutoria[] copiaTutorias = new Tutoria[coleccionTutorias.length];
-		for (int i = 0; i < coleccionTutorias.length && coleccionTutorias[i] != null; i++) {
+		Tutoria[] copiaTutorias = new Tutoria[capacidad];
+		for (int i = 0;!tamanoSuperado(i); i++) {
 			copiaTutorias[i] = new Tutoria(coleccionTutorias[i]);
 		}
 		return copiaTutorias;
@@ -96,7 +95,7 @@ public class Tutorias {
 	}
 
 	private boolean capacidadSuperada(int indice) {
-		return (indice >= capacidad);
+		return indice >= capacidad;
 	}
 
 	public Tutoria buscar(Tutoria tutoria) {

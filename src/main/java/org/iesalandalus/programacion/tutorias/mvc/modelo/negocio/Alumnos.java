@@ -32,8 +32,8 @@ public class Alumnos {
 	}
 
 	private Alumno[] copiaProfundaAlumno() {
-		Alumno[] copiaAlumnos = new Alumno[coleccionAlumnos.length];
-		for (int i = 0; i < coleccionAlumnos.length && coleccionAlumnos[i] != null; i++) {
+		Alumno[] copiaAlumnos = new Alumno[capacidad];
+		for (int i = 0; !tamanoSuperado(i); i++) {
 			copiaAlumnos[i] = new Alumno(coleccionAlumnos[i]);
 		}
 		return copiaAlumnos;
@@ -52,7 +52,7 @@ public class Alumnos {
 
 		if (tamanoSuperado(indice)) {
 			coleccionAlumnos[indice] = new Alumno(alumno);
-			tamano += 1;
+			tamano ++;
 		} else {
 			throw new OperationNotSupportedException("ERROR: Ya existe un alumno con ese expediente.");
 
@@ -79,7 +79,7 @@ public class Alumnos {
 	}
 
 	private boolean capacidadSuperada(int indice) {
-		return (indice >= capacidad);
+		return indice >= capacidad;
 	}
 
 	public Alumno buscar(Alumno alumno) {
@@ -101,7 +101,6 @@ public class Alumnos {
 			throw new IllegalArgumentException("ERROR: No se puede borrar un alumno nulo.");
 		}
 		if (buscar(alumno) != null) {
-			//coleccionAlumnos[indice] = null;
 			desplazarUnaPosicionHaciaIzquierda(indice);
 			tamano--;
 		} else {

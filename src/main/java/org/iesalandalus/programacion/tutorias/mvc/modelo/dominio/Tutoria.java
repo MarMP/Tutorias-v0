@@ -41,7 +41,8 @@ public class Tutoria {
 		if (nombre.trim().equals("")) {
 			throw new IllegalArgumentException("ERROR: El nombre no tiene un formato válido.");
 		}
-		this.nombre = nombre.trim();
+		nombre = nombre.trim(); //quita espacios iniciales y finales que daban errores en los test
+		this.nombre = nombre;
 	}
 
 	@Override

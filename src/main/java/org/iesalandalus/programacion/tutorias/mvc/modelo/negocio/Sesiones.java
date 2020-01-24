@@ -25,8 +25,8 @@ public class Sesiones {
 	}
 
 	private Sesion[] copiaProfundaSesiones() {
-		Sesion[] copiaSesion = new Sesion[coleccionSesiones.length];
-		for (int i = 0; i < coleccionSesiones.length && coleccionSesiones[i] != null; i++) {
+		Sesion[] copiaSesion = new Sesion[capacidad];
+		for (int i = 0; !tamanoSuperado(i); i++) {
 			copiaSesion[i] = new Sesion(coleccionSesiones[i]);
 		}
 		return copiaSesion;
@@ -36,12 +36,11 @@ public class Sesiones {
 		if (tutoria == null) {
 			throw new IllegalArgumentException("ERROR: tutoria nula.");
 		}
-		int posicion = 0;
-		Sesion[] sesionesTutoria = new Sesion[tamano];
-		for (int i = 0; i < coleccionSesiones.length && coleccionSesiones[i] != null; i++) {
+		int j = 0;
+		Sesion[] sesionesTutoria = new Sesion[capacidad];
+		for (int i = 0; !tamanoSuperado(i); i++) {
 			if (coleccionSesiones[i].getTutoria().equals(tutoria)) {
-				sesionesTutoria[posicion] = new Sesion(coleccionSesiones[i]);
-				posicion++;
+				sesionesTutoria[j++] = new Sesion(coleccionSesiones[i]);
 			}
 		}
 		return sesionesTutoria;
