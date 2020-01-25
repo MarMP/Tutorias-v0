@@ -31,6 +31,66 @@ public class Modelo {
 
 	}
 
+	public void insertar(Alumno alumno) throws OperationNotSupportedException {
+		alumnos.insertar(alumno);
+	}
+
+	public void insertar(Profesor profesor) throws OperationNotSupportedException {
+		profesores.insertar(profesor);
+	}
+
+	public void insertar(Tutoria tutoria) throws OperationNotSupportedException {
+		tutorias.insertar(tutoria);
+	}
+
+	public void insertar(Sesion sesion) throws OperationNotSupportedException {
+		sesiones.insertar(sesion);
+	}
+
+	public void insertar(Cita cita) throws OperationNotSupportedException {
+		citas.insertar(cita);
+	}
+
+	public Alumno buscar(Alumno alumno) {
+		return alumnos.buscar(alumno);
+	}
+
+	public Profesor buscar(Profesor profesor) {
+		return profesores.buscar(profesor);
+	}
+
+	public Tutoria buscar(Tutoria tutoria) {
+		return tutorias.buscar(tutoria);
+	}
+
+	public Sesion buscar(Sesion sesion) {
+		return sesiones.buscar(sesion);
+	}
+
+	public Cita buscar(Cita cita) {
+		return citas.buscar(cita);
+	}
+
+	public void borrar(Alumno alumno) throws OperationNotSupportedException {
+		alumnos.borrar(alumno);
+	}
+
+	public void borrar(Profesor profesor) throws OperationNotSupportedException {
+		profesores.borrar(profesor);
+	}
+
+	public void borrar(Tutoria tutoria) throws OperationNotSupportedException {
+		tutorias.borrar(tutoria);
+	}
+
+	public void borrar(Sesion sesion) throws OperationNotSupportedException {
+		sesiones.borrar(sesion);
+	}
+
+	public void borrar(Cita cita) throws OperationNotSupportedException {
+		citas.borrar(cita);
+	}
+
 	public Alumno[] getAlumnos() {
 		return alumnos.get();
 	}
@@ -65,66 +125,6 @@ public class Modelo {
 
 	public Cita[] getCitas(Alumno alumno) {
 		return citas.get(alumno);
-	}
-
-	public void insertar(Alumno alumno) throws OperationNotSupportedException {
-		alumnos.insertar(alumno);
-	}
-
-	public void insertar(Profesor profesor) throws OperationNotSupportedException {
-		profesores.insertar(profesor);
-	}
-
-	public void insertar(Tutoria tutoria) throws OperationNotSupportedException {
-		tutorias.insertar(tutoria);
-	}
-
-	public void insertar(Sesion sesion) throws OperationNotSupportedException {
-		sesiones.insertar(sesion);
-	}
-
-	public void insertar(Cita cita) throws OperationNotSupportedException {
-		citas.insertar(cita);
-	}
-
-	public void buscar(Alumno alumno) {
-		alumnos.buscar(alumno);
-	}
-
-	public void buscar(Profesor profesor) {
-		profesores.buscar(profesor);
-	}
-
-	public void buscar(Tutoria tutoria) {
-		tutorias.buscar(tutoria);
-	}
-
-	public void buscar(Sesion sesion) {
-		sesiones.buscar(sesion);
-	}
-
-	public void buscar(Cita cita) {
-		citas.buscar(cita);
-	}
-
-	public void borrar(Alumno alumno) throws OperationNotSupportedException {
-		alumnos.borrar(alumno);
-	}
-
-	public void borrar(Profesor profesor) throws OperationNotSupportedException {
-		profesores.borrar(profesor);
-	}
-
-	public void borrar(Tutoria tutoria) throws OperationNotSupportedException {
-		tutorias.borrar(tutoria);
-	}
-
-	public void borrar(Sesion sesion) throws OperationNotSupportedException {
-		sesiones.borrar(sesion);
-	}
-
-	public void borrar(Cita cita) throws OperationNotSupportedException {
-		citas.borrar(cita);
 	}
 
 }

@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Alumno;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Cita;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Sesion;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
@@ -130,6 +131,23 @@ public class Consola {
 			System.out.println("ERROR: El formato de la fecha no es el correcto.");
 		}
 		return Sesion.getSesionFicticia(leerTutoria(), fecha);
+	}
+	
+	public static Cita leerCita() {
+		Cita cita = null;
+		LocalTime hora = null;
+		String cadenaHora = "HH:mm";
+		DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern(cadenaHora);
+		String horaLeida = Entrada.cadena();
+		
+		try {
+			System.out.print("Introduzca hora de la cita: " + cadenaHora);
+			hora = LocalTime.parse(horaLeida, formatoHora);
+		} catch (DateTimeParseException e) {
+			System.out.println("ERROR: El formato de la hora no es el correcto.");
+		}
+		cita = new Cita (leerAlumno(), leerSesion(), hora);
+		return cita;
 	}
 
 }
