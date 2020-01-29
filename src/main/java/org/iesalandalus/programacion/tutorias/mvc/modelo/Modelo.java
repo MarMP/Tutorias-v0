@@ -40,15 +40,44 @@ public class Modelo {
 	}
 
 	public void insertar(Tutoria tutoria) throws OperationNotSupportedException {
-		tutorias.insertar(tutoria);
+		if (tutoria == null) {
+			throw new NullPointerException("ERROR: No se puede insertar una tutoría nula.");
+		}
+		Profesor profesor = profesores.buscar(tutoria.getProfesor());
+		if (profesor == null) {
+			throw new OperationNotSupportedException("ERROR: No existe ningún profesor con ese DNI.");
+		}
+		tutorias.insertar(new Tutoria (profesor, tutoria.getNombre())); 
+		//tutorias.insertar(tutoria);
 	}
 
 	public void insertar(Sesion sesion) throws OperationNotSupportedException {
-		sesiones.insertar(sesion);
+		if (sesion == null) {
+			throw new NullPointerException("ERROR: No se puede insertar una sesión nula.");
+		}
+		Tutoria tutoria = tutorias.buscar(sesion.getTutoria());
+		if (tutoria == null) {
+			throw new OperationNotSupportedException("ERROR: No existe ninguna tutoria.");
+		}
+		sesiones.insertar(new Sesion (tutoria, sesion.getFecha(), sesion.getHoraInicio(),sesion.getHoraFin(),sesion.getMinutosDuracion()));
+		// sesiones.insertar(sesion);
 	}
 
 	public void insertar(Cita cita) throws OperationNotSupportedException {
-		citas.insertar(cita);
+		if (cita == null) {
+			throw new NullPointerException("ERROR: No se puede insertar una cita nula.");
+		}
+		Alumno alumno = alumnos.buscar(cita.getAlumno());
+		if (alumno == null) {
+			throw new OperationNotSupportedException("ERROR: No existe ningún alumno con ese correo.");
+		} 
+		Sesion sesion = sesiones.buscar(cita.getSesion());
+		if (sesion == null) {
+			throw new OperationNotSupportedException("ERROR: No existe ninguna sesión con esa tutoria y fecha.");
+		} 
+		citas.insertar(new Cita(alumno, sesion, cita.getHora()));  
+		
+		//citas.insertar(cita);
 	}
 
 	public Alumno buscar(Alumno alumno) {
