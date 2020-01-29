@@ -21,9 +21,9 @@ public class Cita {
 		if (cita == null) {
 			throw new NullPointerException("ERROR: No es posible copiar una cita nula.");
 		}
-		setAlumno(cita.alumno);
-		setSesion(cita.sesion);
-		setHora(cita.hora);
+		setAlumno(cita.getAlumno());
+		setSesion(cita.getSesion());
+		setHora(cita.getHora());
 	}
 
 	public Alumno getAlumno() {
@@ -88,7 +88,7 @@ public class Cita {
 
 	@Override
 	public String toString() {
-		return "alumno=" + alumno + ", sesion=" + sesion + ", hora=" + hora.format(FORMATO_HORA);
+		return String.format("alumno=%s, sesion=%s, hora=%s" , alumno, sesion, hora.format(FORMATO_HORA));
 	}
 
 }

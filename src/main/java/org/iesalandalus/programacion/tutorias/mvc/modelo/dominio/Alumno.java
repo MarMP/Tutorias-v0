@@ -16,16 +16,16 @@ public class Alumno {
 		setNombre(nombre);
 		setCorreo(correo);
 		incrementaUltimoIdentificador();
-		expediente = PREFIJO_EXPEDIENTE + getIniciales() + "_" + ultimoIdentificador;
+		setExpediente(expediente); 
 	}
 
 	public Alumno(Alumno alumno) {
 		if (alumno == null) {
 			throw new NullPointerException("ERROR: No es posible copiar un alumno nulo.");
 		}
-		setNombre(alumno.nombre);
-		setCorreo(alumno.correo);
-		expediente = PREFIJO_EXPEDIENTE + getIniciales() + "_" + ultimoIdentificador;
+		setNombre(alumno.getNombre());
+		setCorreo(alumno.getCorreo());
+		this.expediente = alumno.getExpediente();
 	}
 
 	public static Alumno getAlumnoFicticio(String correo) {
@@ -53,11 +53,11 @@ public class Alumno {
 
 	private String formateaNombre(String nombre) {
 		String cadenaMinus = nombre;
-		cadenaMinus = cadenaMinus.toLowerCase(); // convierto la cadena a minúscula
-		cadenaMinus = cadenaMinus.trim(); // quito espacios en blanco iniciales y finales
-		cadenaMinus = cadenaMinus.replaceAll(" +", " "); // quita espacios de mas
-		char[] cadCaracter = cadenaMinus.toCharArray(); // convierte la cadena en un array de caracteres
-		cadCaracter[0] = Character.toUpperCase(cadCaracter[0]); // primera letra mayúscula
+		cadenaMinus = cadenaMinus.toLowerCase(); 
+		cadenaMinus = cadenaMinus.trim(); 
+		cadenaMinus = cadenaMinus.replaceAll(" +", " "); 
+		char[] cadCaracter = cadenaMinus.toCharArray(); 
+		cadCaracter[0] = Character.toUpperCase(cadCaracter[0]); 
 
 		for (int i = 0; i < cadenaMinus.length() - 1; i++)
 			if (cadCaracter[i] == ' ' || cadCaracter[i] == '.') {
@@ -88,6 +88,7 @@ public class Alumno {
 	}
 
 	private void setExpediente(String expediente) {
+		expediente = PREFIJO_EXPEDIENTE + getIniciales() + "_" + ultimoIdentificador; 
 		this.expediente = expediente;
 	}
 
@@ -96,11 +97,11 @@ public class Alumno {
 	}
 
 	private String getIniciales() {
-		String[] nombres = nombre.split(" "); // Genera array de String Maria del Mar --> ["María" "del" "Mar"]
+		String[] nombres = nombre.split(" "); 
 		String iniciales = "";
 		for (String nombre : nombres) {
 			if (!nombre.equals("")) {
-				iniciales = iniciales + nombre.charAt(0); // MdM
+				iniciales = iniciales + nombre.charAt(0); 
 			}
 		}
 		return iniciales.toUpperCase();

@@ -85,11 +85,10 @@ public class Consola {
 		LocalDate fecha = null;
 		String cadenaFormato = "dd/MM/yyyy";
 		DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern(cadenaFormato);
-		String fechaLeida = Entrada.cadena();
 
 		try {
-			System.out.print("Introduzca fecha para la sesión: " + cadenaFormato);
-			fecha = LocalDate.parse(fechaLeida, formatoFecha);
+			System.out.printf("Introduzca fecha para la sesión (%s): " , cadenaFormato);
+			fecha = LocalDate.parse(Entrada.cadena(), formatoFecha);
 		} catch (DateTimeParseException e) {
 			System.out.println("ERROR: El formato de la fecha no es el correcto.");
 		}
@@ -98,14 +97,12 @@ public class Consola {
 		LocalTime horaFin = null;
 		String cadenaHora = "HH:mm";
 		DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern(cadenaHora);
-		String horaInicioLeida = Entrada.cadena();
-		String horaFinLeida = Entrada.cadena();
 
 		try {
-			System.out.print("Introduzca hora inicio sesión: " + cadenaHora);
-			horaInicio = LocalTime.parse(horaInicioLeida, formatoHora);
-			System.out.print("Introduzca hora fin de sesión: " + cadenaHora);
-			horaFin = LocalTime.parse(horaFinLeida, formatoHora);
+			System.out.printf("Introduzca hora inicio sesión (%s): " , cadenaHora);
+			horaInicio = LocalTime.parse(Entrada.cadena(), formatoHora);
+			System.out.printf("Introduzca hora fin de sesión (%s): " , cadenaHora);
+			horaFin = LocalTime.parse(Entrada.cadena(), formatoHora);
 		} catch (DateTimeParseException e) {
 			System.out.println("ERROR: El formato de la hora no es el correcto.");
 		}
@@ -122,11 +119,10 @@ public class Consola {
 		LocalDate fecha = null;
 		String cadenaFormato = "dd/MM/yyyy";
 		DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern(cadenaFormato);
-		String fechaLeida = Entrada.cadena();
 
 		try {
-			System.out.print("Introduzca fecha para la sesión: " + cadenaFormato);
-			fecha = LocalDate.parse(fechaLeida, formatoFecha);
+			System.out.printf("Introduzca fecha para la sesión (%s): " , cadenaFormato);
+			fecha = LocalDate.parse(Entrada.cadena(), formatoFecha);
 		} catch (DateTimeParseException e) {
 			System.out.println("ERROR: El formato de la fecha no es el correcto.");
 		}
@@ -138,11 +134,10 @@ public class Consola {
 		LocalTime hora = null;
 		String cadenaHora = "HH:mm";
 		DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern(cadenaHora);
-		String horaLeida = Entrada.cadena();
 		
 		try {
-			System.out.print("Introduzca hora de la cita: " + cadenaHora);
-			hora = LocalTime.parse(horaLeida, formatoHora);
+			System.out.printf("Introduzca hora de la cita (%s): " , cadenaHora);
+			hora = LocalTime.parse(Entrada.cadena(), formatoHora);
 		} catch (DateTimeParseException e) {
 			System.out.println("ERROR: El formato de la hora no es el correcto.");
 		}

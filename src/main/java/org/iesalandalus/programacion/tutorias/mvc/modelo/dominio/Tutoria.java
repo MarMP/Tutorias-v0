@@ -15,8 +15,8 @@ public class Tutoria {
 		if (tutoria == null) {
 			throw new NullPointerException("ERROR: No es posible copiar una tutoría nula.");
 		}
-		setProfesor(tutoria.profesor);
-		setNombre(tutoria.nombre);
+		setProfesor(tutoria.getProfesor());
+		setNombre(tutoria.getNombre());
 	}
 
 	public Profesor getProfesor() {
@@ -64,7 +64,7 @@ public class Tutoria {
 
 	@Override
 	public String toString() {
-		return "profesor=" + profesor + ", nombre=" + nombre;
+		return String.format("profesor=%s, nombre=%s" , profesor, nombre);
 	}
 
 }

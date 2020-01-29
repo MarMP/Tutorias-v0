@@ -32,7 +32,7 @@ public class Controlador {
 	}
 
 	public void terminar() {
-		System.out.println("Hasta luego Lucas!!!");
+		System.out.println("¡Hasta luego!");
 	}
 
 	public void insertar(Alumno alumno) throws OperationNotSupportedException {

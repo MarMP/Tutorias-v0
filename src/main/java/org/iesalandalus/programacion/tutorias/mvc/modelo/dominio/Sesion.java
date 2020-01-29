@@ -31,11 +31,11 @@ public class Sesion {
 		if (sesion == null) {
 			throw new NullPointerException("ERROR: No es posible copiar una sesión nula.");
 		}
-		setTutoria(sesion.tutoria);
-		setFecha(sesion.fecha);
-		setHoraInicio(sesion.horaInicio);
-		setHoraFin(sesion.horaFin);
-		setMinutosDuracion(sesion.minutosDuracion);
+		setTutoria(sesion.getTutoria());
+		setFecha(sesion.getFecha());
+		setHoraInicio(sesion.getHoraInicio());
+		setHoraFin(sesion.getHoraFin());
+		setMinutosDuracion(sesion.getMinutosDuracion());
 		comprobarValidezSesion();
 
 	}
@@ -145,9 +145,9 @@ public class Sesion {
 
 	@Override
 	public String toString() {
-		return "tutoria=" + tutoria + ", fecha=" + fecha.format(FORMATO_FECHA) + ", horaInicio="
-				+ horaInicio.format(FORMATO_HORA) + ", horaFin=" + horaFin.format(FORMATO_HORA) + ", minutosDuracion="
-				+ minutosDuracion;
+		return String.format("tutoria=%s, fecha=%s, horaInicio=%s, horaFin=%s, minutosDuracion=%s", tutoria,
+				fecha.format(FORMATO_FECHA), horaInicio.format(FORMATO_HORA), horaFin.format(FORMATO_HORA),
+				minutosDuracion);
 
 	}
 

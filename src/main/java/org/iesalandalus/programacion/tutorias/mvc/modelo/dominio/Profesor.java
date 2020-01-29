@@ -22,9 +22,9 @@ public class Profesor {
 		if (profesor == null) {
 			throw new NullPointerException("ERROR: No es posible copiar un profesor nulo.");
 		}
-		setNombre(profesor.nombre);
-		setDni(profesor.dni);
-		setCorreo(profesor.correo);
+		setNombre(profesor.getNombre());
+		setDni(profesor.getDni());
+		setCorreo(profesor.getCorreo());
 	}
 	
 	
@@ -49,12 +49,11 @@ public class Profesor {
 
 	private String formateaNombre(String nombre) {
 		String cadenaMinus = nombre;
-		cadenaMinus = cadenaMinus.toLowerCase(); // convierto la cadena a minúscula
-		cadenaMinus = cadenaMinus.trim(); // quito espacios en blanco iniciales y finales
-		cadenaMinus = cadenaMinus.replaceAll(" +", " "); // quita espacios de mas
-		char[] cadCaracter = cadenaMinus.toCharArray(); // convierte la cadena en un array de caracteres
-		cadCaracter[0] = Character.toUpperCase(cadCaracter[0]); // primera letra mayúscula
-
+		cadenaMinus = cadenaMinus.toLowerCase(); 
+		cadenaMinus = cadenaMinus.trim(); 
+		cadenaMinus = cadenaMinus.replaceAll(" +", " ");
+		char[] cadCaracter = cadenaMinus.toCharArray(); 
+		cadCaracter[0] = Character.toUpperCase(cadCaracter[0]); 
 		// Recorre el array de char
 		for (int i = 0; i < cadenaMinus.length() - 1; i++)
 			if (cadCaracter[i] == ' ' || cadCaracter[i] == '.') {
@@ -96,8 +95,8 @@ public class Profesor {
 		int posicionLetra;
 
 		while (matcher.find()) {
-			String numeroDni = matcher.group(1); // grupo 1 de la expresion
-			posicionLetra = Integer.parseInt(numeroDni) % 23; // calcula el resto que sera la letra
+			String numeroDni = matcher.group(1); 
+			posicionLetra = Integer.parseInt(numeroDni) % 23; 
 			String letraDni = matcher.group(2);
 			char caracter = letraDni.charAt(0);
 			if (caracter == letra[posicionLetra]) {
@@ -148,20 +147,21 @@ public class Profesor {
 		return Objects.equals(dni, other.dni);
 	}
 
-	@Override
-	public String toString() {
-		return "nombre=" + nombre +  " (" + getIniciales() + ")" + ", DNI=" + dni + ", correo=" + correo;
-	}
 
 	private String getIniciales() {
-		String[] nombres = nombre.split(" "); // Genera array de String Maria del Mar --> ["María" "del" "Mar"]
+		String[] nombres = nombre.split(" ");  
 		String iniciales = "";
 		for (String nombre : nombres) {
 			if (!nombre.equals("")) {
-				iniciales = iniciales + nombre.charAt(0); // MdM
+				iniciales = iniciales + nombre.charAt(0); 
 			}
 		}
 		return iniciales.toUpperCase();
+	}
+	
+	@Override
+	public String toString() {
+		return "nombre=" + nombre +  " (" + getIniciales() + ")" + ", DNI=" + dni + ", correo=" + correo;
 	}
 
 }
