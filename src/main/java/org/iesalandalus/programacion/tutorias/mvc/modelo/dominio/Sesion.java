@@ -36,8 +36,6 @@ public class Sesion {
 		setHoraInicio(sesion.getHoraInicio());
 		setHoraFin(sesion.getHoraFin());
 		setMinutosDuracion(sesion.getMinutosDuracion());
-		comprobarValidezSesion();
-
 	}
 
 	public Tutoria getTutoria() {
@@ -111,7 +109,7 @@ public class Sesion {
 		if (horaInicio.isAfter(horaFin)) {
 			throw new IllegalArgumentException("ERROR: Las hora para establecer la sesión no son válidas.");
 		}
-		if (fecha.isEqual(fecha.now()) || fecha.isBefore(fecha.now())) {
+		if (fecha.isEqual(LocalDate.now()) || fecha.isBefore(LocalDate.now())) {
 			throw new IllegalArgumentException("ERROR: Las sesiones de deben planificar para fechas futuras.");
 		}
 		long intervalo = Duration.between(horaInicio, horaFin).toMinutes();

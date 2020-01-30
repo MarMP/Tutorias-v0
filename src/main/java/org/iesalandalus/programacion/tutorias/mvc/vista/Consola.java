@@ -141,7 +141,7 @@ public class Consola {
 		} catch (DateTimeParseException e) {
 			System.out.println("ERROR: El formato de la hora no es el correcto.");
 		}
-		cita = new Cita (leerAlumno(), leerSesion(), hora);
+		cita = new Cita (leerAlumnoFicticio(), leerSesion(), hora);
 		return cita;
 	}
 

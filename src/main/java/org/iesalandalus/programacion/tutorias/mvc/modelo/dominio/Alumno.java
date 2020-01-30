@@ -16,7 +16,7 @@ public class Alumno {
 		setNombre(nombre);
 		setCorreo(correo);
 		incrementaUltimoIdentificador();
-		setExpediente(expediente); 
+		setExpediente(); 
 	}
 
 	public Alumno(Alumno alumno) {
@@ -42,13 +42,12 @@ public class Alumno {
 		}
 		if (nombre.trim().equals("")) {
 			throw new IllegalArgumentException("ERROR: El nombre no tiene un formato válido.");
-		}
+		} 
 		this.nombre = formateaNombre(nombre);
 
 		if (!this.nombre.matches(ER_NOMBRE)) {
 			throw new IllegalArgumentException("ERROR: El nombre no tiene un formato válido.");
-		}
-
+		}		
 	}
 
 	private String formateaNombre(String nombre) {
@@ -58,7 +57,7 @@ public class Alumno {
 		cadenaMinus = cadenaMinus.replaceAll(" +", " "); 
 		char[] cadCaracter = cadenaMinus.toCharArray(); 
 		cadCaracter[0] = Character.toUpperCase(cadCaracter[0]); 
-
+		
 		for (int i = 0; i < cadenaMinus.length() - 1; i++)
 			if (cadCaracter[i] == ' ' || cadCaracter[i] == '.') {
 				cadCaracter[i + 1] = Character.toUpperCase(cadCaracter[i + 1]);
@@ -87,9 +86,8 @@ public class Alumno {
 		return expediente;
 	}
 
-	private void setExpediente(String expediente) {
+	private void setExpediente() {
 		expediente = PREFIJO_EXPEDIENTE + getIniciales() + "_" + ultimoIdentificador; 
-		this.expediente = expediente;
 	}
 
 	private static void incrementaUltimoIdentificador() {
